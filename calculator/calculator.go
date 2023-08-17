@@ -1,26 +1,19 @@
 package calculator
 
 import (
-	"errors"
+	abstract "bernanda/learn/abstraction"
 )
 
-func SumAll(numbers ...int) (sum int) {
-	for i := 0; i < len(numbers); i++ {
-		sum += numbers[i]
-	}
-	return
+type CalculatorResponse struct {
+	baseResponse abstract.BaseResponse
+	result       interface{}
 }
 
-func isDivisionByZero(err *error, pm *interface{}) {
-	msg := recover()
-	if msg != nil {
-		*err = errors.New("Oops Division by Zero")
-		*pm = msg
-	}
-}
+func RunCalculator() {
+	start()
 
-func Division(a, b int) (result int, err error, panic_msg interface{}) {
-	defer isDivisionByZero(&err, &panic_msg)
-	result = a / b
-	return
+	// div := CalculatorResponse{}
+	// div.result, div.baseResponse.Err, div.baseResponse.PanicMsg = Division(10, 0)
+
+	// fmt.Println(div)
 }

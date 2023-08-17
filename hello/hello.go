@@ -1,5 +1,10 @@
 package hello
 
+import (
+	"fmt"
+	"time"
+)
+
 func ValidChar() []byte {
 	var temp []byte
 	for i := byte(32); i < 128; i++ {
@@ -26,4 +31,25 @@ func GetKey() (key string) {
 	key = "Hello World!"
 
 	return
+}
+
+func RunHello() {
+	key := GetKey()
+	b := byte(32)
+
+	for i := 0; i < len(key); {
+		fmt.Print(string(b))
+		time.Sleep(time.Millisecond)
+
+		if b == key[i] {
+			b = 32
+			i++
+			continue
+		}
+
+		fmt.Print("\b")
+		b++
+	}
+
+	fmt.Print("\n")
 }
